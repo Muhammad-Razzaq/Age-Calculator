@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>Age Calculator</h1>
+        <center>
+            <form onsubmit="return birth()">
+                <input type="date" id="userInput" />
+                <button>Caluculate</button>
+            </form>
+        </center>
+        <br /><br />
+        <label>Month : <span id="months"></span></label><br />
+        <label>Days : <span id="days"></span></label><br />
+        <label>Hours : <span id="hours"></span></label><br />
+        <label>Minutes : <span id="minutes"></span></label><br />
+        <label>Second : <span id="seconds"></span></label><br /><br />
+        <label>Your Age : <span id="age"></span></label>
+    </div>
+</body>
+<script>
+    function birth() {
+        let user = document.getElementById("userInput").value;
+
+        let userDate = new Date(user).getTime();
+        let nowDate = new Date().getTime();
+        let result = nowDate - userDate;
+        console.log(result);
+
+        let seconds = Math.floor(result * 1000);
+        let minutes = Math.floor(result / (1000 * 60));
+        let hours = Math.floor(result / (1000 * 60 * 60));
+        let days = Math.floor(result / (1000 * 60 * 60 * 24));
+        let months = Math.floor(result / (1000 * 60 * 60 * 24 * 30));
+        let age = Math.floor(result / (1000 * 60 * 60 * 24 * 30 * 12));
+
+
+        document.getElementById("months").innerHTML = months;
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+        document.getElementById("age").innerHTML = age;
+
+        return false;
+    }
+</script>
+
+</html>
